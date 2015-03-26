@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<openerp>
+    <data>
+        <!-- Document Template Function -->
+        <record model="ir.ui.view" id="document_template_function_tree_view">
+            <field name="name">document.template.function.tree</field>
+            <field name="model">document.template.function</field>
+            <field name="inherit_id" ref="generic_document_render.document_template_function_tree_view"/>
+            <field name="arch" type="xml">
+
+                <field name="type" position="after">
+                    <field name="is_filter" />
+                    <field name="is_test" />
+                    <field name="is_function"/>
+                </field>
+            </field>
+        </record>
+
+        <record model="ir.ui.view" id="document_template_function_form_view">
+            <field name="name">document.template.function.form</field>
+            <field name="model">document.template.function</field>
+            <field name="inherit_id" ref="generic_document_render.document_template_function_form_view"/>
+            <field name="arch" type="xml">
+                <field name="type" position="after">
+                    <field name="is_filter" attrs="{'readonly': [('type', 'not in', ['jinja'])], 'invisible': [('type', 'not in', ['jinja'])]}"/>
+                    <field name="is_test" attrs="{'readonly': [('type', 'not in', ['jinja'])], 'invisible': [('type', 'not in', ['jinja'])]}"/>
+                    <field name="is_function" attrs="{'readonly': [('type', 'not in', ['jinja'])], 'invisible': [('type', 'not in', ['jinja'])]}"/>
+                </field>
+            </field>
+        </record>
+
+        <!-- Document Template Function -->
+    </data>
+</openerp>
