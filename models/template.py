@@ -42,14 +42,17 @@ class DocumentTemplate(models.Model):
         jenv.tests.update(all_functions['tests'])
         jenv.globals.update(all_functions['functions'])
 
+        if 'globals' in params:
+            jenv.globals.update(params['globals'])
+
         if 'filters' in params:
             jenv.filters.update(params['filters'])
 
         if 'tests' in params:
-            jenv.filters.update(params['tests'])
+            jenv.tests.update(params['tests'])
 
         if 'functions' in params:
-            jenv.filters.update(params['functions'])
+            jenv.globals.update(params['functions'])
 
         data.update(now=datetime.now(), today=date.today(), context=self.env.context, env=self.env)
 
